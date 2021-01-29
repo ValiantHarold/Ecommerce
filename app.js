@@ -20,8 +20,6 @@ const shopRoutes = require('./routes/shop');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 app.use((req, res, next) => {
     User.findById('6013336da2657f22f410543e')
         .then(user => {
@@ -53,7 +51,6 @@ const options = {
 
 const MONGODB_URL = process.env.MONGODB_URL || 'mongodb+srv://Samuel:Lt1YGw42ik6YTuhc@cluster0.epkze.mongodb.net/shop';
 
-
 mongoose
     .connect(MONGODB_URL, options)
     .then(result => {
@@ -73,6 +70,5 @@ mongoose
         app.listen(PORT);
     })
     .catch(err => console.log(err));
-
 
 // pw:Lt1YGw42ik6YTuhc
