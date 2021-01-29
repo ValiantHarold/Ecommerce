@@ -3,6 +3,8 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
+const PORT = process.env.PORT || 5000
 
 const errorController = require('./controllers/error');
 const User = require('./models/user');
@@ -18,7 +20,7 @@ const shopRoutes = require('./routes/shop');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// new User(user.name, user.email, user.cart, user._id) 
+
 
 app.use((req, res, next) => {
     User.findById('6013336da2657f22f410543e')
@@ -34,7 +36,12 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-const mongoUrl = 'mongodb+srv://Samuel:Lt1YGw42ik6YTuhc@cluster0.epkze.mongodb.net/shop'
+const corsOptions = {
+    origin: "https://cse341ecommerce.herokuapp.com/",
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 const options = {
     useUnifiedTopology: true,
@@ -44,8 +51,11 @@ const options = {
     family: 4
 };
 
+const MONGODB_URL = process.env.MONGODB_URL || 'mongodb+srv://Samuel:Lt1YGw42ik6YTuhc@cluster0.epkze.mongodb.net/shop';
+
+
 mongoose
-    .connect(mongoUrl, options)
+    .connect(MONGODB_URL, options)
     .then(result => {
         User.findOne().then(user => {
             if(!user) {
@@ -60,7 +70,7 @@ mongoose
             }
         });
         console.log('Connected to port 3000');
-        app.listen(3000);
+        app.listen(PORT);
     })
     .catch(err => console.log(err));
 
