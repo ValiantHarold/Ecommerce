@@ -1,10 +1,9 @@
-const path = require('path');
-
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 
 const errorController = require('./controllers/error');
 const User = require('./models/user');
