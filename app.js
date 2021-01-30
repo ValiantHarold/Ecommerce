@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv').config();
 const PORT = process.env.PORT || 3000
 
 const errorController = require('./controllers/error');
@@ -48,7 +49,7 @@ const options = {
     family: 4
 };
 
-const MONGODB_URL = process.env.MONGODB_URL || 'mongodb+srv://Samuel:Lt1YGw42ik6YTuhc@cluster0.epkze.mongodb.net/shop';
+const MONGODB_URL = process.env.MONGODB_URL;
 
 mongoose
     .connect(MONGODB_URL, options)
@@ -69,5 +70,3 @@ mongoose
         app.listen(PORT);
     })
     .catch(err => console.log(err));
-
-// pw:Lt1YGw42ik6YTuhc
