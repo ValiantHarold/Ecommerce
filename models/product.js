@@ -45,14 +45,12 @@ module.exports = mongoose.model('Product', productSchema);
 //     const db = getDb();
 //     let dbOp;
 //     if (this._id) {
+//       // Update the product
 //       dbOp = db
-//       .collection('products')
-//       .updateOne({_id: this._id}, {$set: this });
+//         .collection('products')
+//         .updateOne({ _id: this._id }, { $set: this });
 //     } else {
-//       dbOp = db
-//       .collection('products')
-//       .insertOne(this)
-
+//       dbOp = db.collection('products').insertOne(this);
 //     }
 //     return dbOp
 //       .then(result => {
@@ -92,18 +90,19 @@ module.exports = mongoose.model('Product', productSchema);
 //         console.log(err);
 //       });
 //   }
+
 //   static deleteById(prodId) {
 //     const db = getDb();
 //     return db
-//     .collection('products')
-//     .deleteOne({_id: new mongodb.ObjectId(prodId)})
-//     .then(resut => {
-//       console.log('Deleted');
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
+//       .collection('products')
+//       .deleteOne({ _id: new mongodb.ObjectId(prodId) })
+//       .then(result => {
+//         console.log('Deleted');
+//       })
+//       .catch(err => {
+//         console.log(err);
+//       });
 //   }
 // }
 
-// ;
+// module.exports = Product;
