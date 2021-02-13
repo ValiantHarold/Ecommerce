@@ -48,7 +48,6 @@ exports.postAddProduct = (req, res, next) => {
       hasError: true,
       product: {
         title: title,
-        imageUrl: imageUrl,
         price: price,
         description: description
       },
@@ -75,21 +74,6 @@ exports.postAddProduct = (req, res, next) => {
       res.redirect('/admin/products');
     })
     .catch(err => {
-      // return res.status(500).render('admin/edit-product', {
-      //   pageTitle: 'Add Product',
-      //   path: '/admin/add-product',
-      //   editing: false,
-      //   hasError: true,
-      //   product: {
-      //     title: title,
-      //     imageUrl: imageUrl,
-      //     price: price,
-      //     description: description
-      //   },
-      //   errorMessage: 'Database operation failed, please try again.',
-      //   validationErrors: []
-      // });
-      // res.redirect('/500');
       const error = new Error(err);
       error.httpStatusCode = 500;
       return next(error);
@@ -202,12 +186,12 @@ exports.deleteProduct = (req, res, next) => {
       }
       fileHelper.deleteFile(product.imageUrl);
       return Product.deleteOne({ _id: prodId, userId: req.user._id });
-    })  
+    })
     .then(() => {
       console.log('DESTROYED PRODUCT');
-      res.status(200).json({message: 'Success!'});
+      res.status(200).json({ message: 'Success!' });
     })
     .catch(err => {
-      res.status(500).json({message: 'Deleting product failed.'})
+      res.status(500).json({ message: 'Deleting product failed.' });
     });
 };

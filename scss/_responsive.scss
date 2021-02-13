@@ -1,0 +1,13 @@
+@include media-md {
+    .nav {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: none;
+    }
+
+    .user-message {
+        width: 30rem;
+    }
+}

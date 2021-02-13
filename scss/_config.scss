@@ -1,0 +1,32 @@
+$primary-color:#685F74;
+$primary-white:#ffffff;
+$secondary-white:#E0DDE3;
+$primary-black:#000000;
+$secondary-black:#322E38;
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin transition-ease {
+    transition: all 0.5s ease-in-out;
+}
+
+@mixin transition-none {
+    transition: none;
+}
+
+@mixin media-md {
+    @media screen and (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin media-lg {
+    @media screen and (min-width: 1024px) {
+        @content;
+    }
+}

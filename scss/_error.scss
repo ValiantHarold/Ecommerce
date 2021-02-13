@@ -1,0 +1,12 @@
+.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 1rem auto;
+    padding: 1rem;
+    background: $secondary-white;
+    border-radius: 0.5rem;
+    width: 70%;
+}
