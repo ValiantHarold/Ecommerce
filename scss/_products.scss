@@ -77,4 +77,9 @@
     &__description {
         text-align: center;
     }
+
+    &-detail {
+        display: flex;
+        justify-content: center;
+    }
 }
